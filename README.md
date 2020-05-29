@@ -23,7 +23,9 @@ prep...
 
 - `cargo build --release`
 
-    (that'll create, in a 'target' directory, the `log_rotate` binary)
+    (so, obviously, this assumes you've installed rust.)
+
+    (that'll create, in a 'target' directory, the `log_rotate` binary.)
 
 - create an `env_settings.sh` file in the `log_rotate_stuff` directory like...
 
