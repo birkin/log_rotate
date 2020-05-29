@@ -2,7 +2,7 @@
 
 I'm a software developer, and use our redhat servers' `logrotate` to auto-rotate the log-files of my apps.
 
-For local development, I've used the Mac's version of logrotate, which changed a few years ago to `newsyslog`, which I used for some years. At some point, maybe 2 or so years ago, likely due to some OS upgrade --- that stopped working for me. And because I tend to upgrade soon in the cycle, all I could find online were a few similar reports, but no solutions.
+For local development, I've used the Mac's version of logrotate, which at some point changed to `newsyslog`, which I used for years. A few years ago, likely due to an OS upgrade --- that stopped working for me. And because I tend to upgrade soon in the cycle, all I could find online were a few similar reports, but no solutions.
 
 I briefly considered writing my own limited solution in python, my main programming language these days. I'm sure there are `newsyslog` solutions now, but while going through [The Book](https://doc.rust-lang.org/stable/book/), learning a bit of [Rust](https://www.rust-lang.org/), I was casting around for a small useful project, and thought of that logrotate idea --- thus this this app.
 
