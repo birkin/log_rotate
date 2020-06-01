@@ -21,11 +21,8 @@ use std::time::{Duration, Instant};
 
 /*
 
-NEXT:
-- next:
-    - separate code into own repo.
-
-- someday:
+- TODO:
+    - add test --> next: add envars so Config::new() test passes.
     - pass in size-check as arg
     - consider more capable logger
         ... or consider updating a hash or an array that writes to a log-file
@@ -415,4 +412,19 @@ fn load_log_paths( logger_json_file_path: &std::string::String ) -> std::vec::Ve
     // let zz: () = real_array;  // yields: found struct `std::vec::Vec<serde_json::value::Value>`
 
     return real_array;
+}
+
+
+/* -- tests -- */
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[should_panic]
+    fn should_fail_without_envars() {
+        let _config = Config::new();
+    }
+
 }
