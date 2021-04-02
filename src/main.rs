@@ -379,7 +379,7 @@ fn check_existence( path: &str ) -> bool {
 
 
 fn load_log_paths( logger_json_file_path: &std::string::String ) -> std::vec::Vec<serde_json::value::Value> {
-    /*  Loads json list of paths into an iterable json-object.
+    /*  Loads json list of paths into an iterable array.
         Called by: main()  */
 
     // --- read file ---
