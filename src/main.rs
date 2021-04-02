@@ -55,10 +55,11 @@ impl Config {
 }
 
 
-fn main() {
+#[tokio::main]
+async fn main() {
 
     /* start */
-    let start_time = Instant::now();
+    let start_time = Instant::now().await?;  # FAILS
     let local_time: DateTime<Local> = Local::now();
     // println!( "\nstarting rust-custom-logrotate code at, ``{:?}``", local_time.to_rfc3339() );
 
