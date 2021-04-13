@@ -16,8 +16,8 @@ use std::env;
 use std::fs;
 use std::fs::File;
 use std::path::Path;
-use std::time::{Duration, Instant};
-
+// use std::time::{Duration, Instant};
+use tokio::time::{Duration, Instant};
 
 /*
 
@@ -59,8 +59,9 @@ impl Config {
 async fn main() {
 
     /* start */
-    let start_time = Instant::now().await?;  # FAILS
-    let local_time: DateTime<Local> = Local::now();
+    let start_time = Instant::now();
+    // let start_time = Instant::now().await?;  // FAILS
+    let local_time: DateTime<Local> = Local::now().await?;
     // println!( "\nstarting rust-custom-logrotate code at, ``{:?}``", local_time.to_rfc3339() );
 
     /* setup settings */
