@@ -120,7 +120,10 @@ fn manage_directory_entry( item: &serde_json::value::Value ) {
     // debug!( "{}", format!("item from within manage_directory_entry, ``{:?}``", item) );  // yields (EG): item, ``Object({"path": String("/foo/the.log")})``
 
     // -- get path String from json-dict-object
-    let path_rfrnc = item["path"].as_str().unwrap_or_else( || {panic!("problem reading path from json-obj -- ``{:?}``");} );
+    let path_value = &item["path"];
+    let path_rfrnc = path_value.as_str().unwrap_or_else(|| {
+        panic!("problem reading path from json-obj: {:?}", path_value);
+    });
     // let zz: () = path_rfrnc;  // yields: found `&str`
     let path: String = path_rfrnc.into();
     // let zz: () = path;  // yields: found struct `std::string::String`
