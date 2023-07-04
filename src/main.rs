@@ -120,7 +120,10 @@ fn manage_directory_entry( item: &serde_json::value::Value ) {
     // debug!( "{}", format!("item from within manage_directory_entry, ``{:?}``", item) );  // yields (EG): item, ``Object({"path": String("/foo/the.log")})``
 
     // -- get path String from json-dict-object
-    let path_rfrnc = item["path"].as_str().unwrap_or_else( || {panic!("problem reading path from json-obj -- ``{:?}``");} );
+    let path_value = &item["path"];
+    let path_rfrnc = path_value.as_str().unwrap_or_else(|| {
+        panic!("problem reading path from json-obj: {:?}", path_value);
+    });
     // let zz: () = path_rfrnc;  // yields: found `&str`
     let path: String = path_rfrnc.into();
     // let zz: () = path;  // yields: found struct `std::string::String`
@@ -210,7 +213,8 @@ fn process_file( file_path: &str, file_name: &str, parent_path: &str ) {
         _ => {
             let err_message = "unexpected extension found".to_string();
             error!( "{}", err_message );
-            panic!( err_message );
+            // panic!( err_message );
+            panic!( "{}", err_message );
         }
     };
     debug!( "{}", format!("new_extension, ``{:?}``", new_extension) );
@@ -224,7 +228,8 @@ fn process_file( file_path: &str, file_name: &str, parent_path: &str ) {
     let bytes_copied = fs::copy( file_path, destination_path ).unwrap_or_else( |err| {
         let err_message = format!( "problem copying the file, ``{}``", err );
         error!( "{}", err_message );
-        panic!( err_message );
+        // panic!( err_message );
+        panic!( "{}", err_message );
     });
     info!( "{}", format!("copied ``{:?}K``", (bytes_copied / 1024)) );
 
@@ -234,7 +239,8 @@ fn process_file( file_path: &str, file_name: &str, parent_path: &str ) {
         let _empty_file = File::create(&path).unwrap_or_else( |err| {
             let err_message = format!( "problem creating new empty file, ``{}``", err );
             error!( "{}", err_message );
-            panic!( err_message );
+            // panic!( err_message );
+            panic!( "{}", err_message );
         });
     }
 
