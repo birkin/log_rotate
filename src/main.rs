@@ -213,7 +213,8 @@ fn process_file( file_path: &str, file_name: &str, parent_path: &str ) {
         _ => {
             let err_message = "unexpected extension found".to_string();
             error!( "{}", err_message );
-            panic!( err_message );
+            // panic!( err_message );
+            panic!( "{}", err_message );
         }
     };
     debug!( "{}", format!("new_extension, ``{:?}``", new_extension) );
@@ -227,7 +228,8 @@ fn process_file( file_path: &str, file_name: &str, parent_path: &str ) {
     let bytes_copied = fs::copy( file_path, destination_path ).unwrap_or_else( |err| {
         let err_message = format!( "problem copying the file, ``{}``", err );
         error!( "{}", err_message );
-        panic!( err_message );
+        // panic!( err_message );
+        panic!( "{}", err_message );
     });
     info!( "{}", format!("copied ``{:?}K``", (bytes_copied / 1024)) );
 
@@ -237,7 +239,8 @@ fn process_file( file_path: &str, file_name: &str, parent_path: &str ) {
         let _empty_file = File::create(&path).unwrap_or_else( |err| {
             let err_message = format!( "problem creating new empty file, ``{}``", err );
             error!( "{}", err_message );
-            panic!( err_message );
+            // panic!( err_message );
+            panic!( "{}", err_message );
         });
     }
 
